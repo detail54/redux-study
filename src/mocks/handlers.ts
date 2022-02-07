@@ -1,7 +1,17 @@
 import { rest } from 'msw'
 import { IData } from '../components/TestMocking'
+import { CounterState } from '../feature/counter/conterSlice'
 
 export const handlers = [
+  rest.put<CounterState>('http://localhost:3000/counter/increment', async(req, res, ctx) => {
+    const { value } = req.body
+    
+    return res(
+      ctx.json({
+        value: value + 2,
+      })
+    )
+  }),
   rest.get('/login', async(req, res, ctx) => {
     return res(
       ctx.json({
@@ -36,3 +46,4 @@ export const handlers = [
     )
   })
 ]
+

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { decrement, increment, incrementByAmount } from './conterSlice';
+import { decrement, fetchIncrement, increment, incrementByAmount } from './conterSlice';
 
 
 const Counter: React.FC = () => {
@@ -10,6 +10,7 @@ const Counter: React.FC = () => {
   return (
     <div>
       <button onClick={() => dispatch(increment())}>increment</button>
+      <button onClick={() => dispatch(fetchIncrement(count))}>Fetch Increment</button>
       <span>{count}</span>
       <button onClick={() => dispatch(decrement())}>decrement</button>
       <button onClick={() => dispatch(incrementByAmount(5))}>+5</button>
@@ -18,3 +19,4 @@ const Counter: React.FC = () => {
 };
 
 export default Counter
+
